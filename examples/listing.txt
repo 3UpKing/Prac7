@@ -1,0 +1,14 @@
+
+   1  void main() { $D+
+   2 // Test object properties for an array
+   3 // array0.pav
+   4 
+   5   int[] list1 = new int[20];
+   6   list1[5] = 'a';
+   7   writeLine(Length(list1));
+****   ^ undeclared identifier
+****             ^ undeclared identifier
+****                         ^ "=" expected
+   8 } // main
+
+3 errors detected
