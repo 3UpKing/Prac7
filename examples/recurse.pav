@@ -1,0 +1,12 @@
+void two(int x) {
+  if (x > 1) two(x-1);  // recursive call
+} // two
+
+void one() {
+  two(1);
+} // one
+
+void main() {
+  one();
+  two(3);
+} // main

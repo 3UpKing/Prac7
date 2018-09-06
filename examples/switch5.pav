@@ -1,0 +1,13 @@
+void main() { $C+ $D+
+// switch3.pav
+
+  switch (4) {
+  case 4:
+    switch(1) {
+    case 1: write("okay"); break;
+    default: break; write("error");
+  } // inner
+  default:
+  } // outer
+} // main
+

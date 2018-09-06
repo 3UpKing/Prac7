@@ -1,0 +1,8 @@
+ void main() { $C+
+// Test object properties for an array
+// array0.pav
+
+  int[] list1 = new int[20];
+  list1[5] = 'a';
+  writeLine(Length(list1));
+} // main

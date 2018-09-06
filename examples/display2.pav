@@ -1,0 +1,24 @@
+void display(int[] list, int n) { $C+
+  while (n >= 0) {
+    write(n, list[n], "\n");
+    n = n - 1;
+  }
+} // display
+
+void compute(int[] fact, int limit) {
+  int i, j, k = 1;
+  fact[0] = 1;
+  while (k <= limit) {
+    fact[k] = fact[k-1] * k;
+    k = k + 1;
+  }
+  display(fact, limit);
+} // compute
+
+void main() {
+  int max;
+  read("Supply limit ", max);
+  int[] list = new int[max + 1];
+  compute(list, max);
+  display(list, max);
+} // main

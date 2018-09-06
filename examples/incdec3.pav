@@ -1,0 +1,13 @@
+void Main () { $C+
+// incdec3.pav
+// More miscellaneous ++ and -- operations - wrong this time
+  const T = true;
+  T++;
+  bool b;
+  b++;
+  b = false;
+  --b;
+  int[] list;
+  list++;
+  list = 90;
+}

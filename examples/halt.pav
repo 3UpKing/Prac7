@@ -1,0 +1,13 @@
+void Main () { $C+
+// halt.pav
+// Miscellaneous extensions to read , write and halt
+  int reason = 42;
+  write("start");
+  writeLine();
+  writeLine("reason is ", reason);
+  readLine("Supply a better reason code ", reason);
+  halt("aborted ", reason);
+  write("continue");
+  halt("if you see this your compiler is wrong");;
+  write("finished");
+}

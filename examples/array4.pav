@@ -1,0 +1,26 @@
+Void main() { $C+
+// Test object properties for an array
+// array4.pav
+
+  int[] list1 = new int[30];
+  int j = 0;
+  while (j < Length(list1)) {
+    list1[j] = j;
+    ++j;
+  }
+
+  int[] list2 = new int[20];
+  j = 0;
+  while (j < Length(list2)) {
+    list2[j] = j + 100;
+    ++j;
+  }
+  writeLine(Length(list1), Length(list2));
+  writeLine(Equals(list1, list2));
+
+  list1 = Copy(list2);
+  writeLine(Length(list1), Length(list2));
+  writeLine(Equals(list2, Copy(list2)));
+  list1[3] = 71;
+  writeLine(Equals(list1, list2));
+} // main

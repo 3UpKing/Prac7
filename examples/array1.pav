@@ -1,0 +1,13 @@
+void main() {
+// Some misconceptions about arrays
+// array1.pav
+
+  int[] array1, array2;
+  array1 = new int[45];
+  array2 = new int[45];
+  write(array1 == array2);        // false, even though of the same length
+  array1[0] = 6;
+  array2 = array1;
+  array2[0] = 8;
+  write(array1[0], array2[0]);   // 8 8   and not  6 8
+} // main

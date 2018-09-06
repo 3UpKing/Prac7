@@ -1,0 +1,8 @@
+void main () {
+// formatted1.pav
+// Formatted output
+  int i = 12;
+  bool b = false;
+  char ch = '#';
+  writeLine(i : 10,  '*', b : 9, '*', ch : -3 * 2, '*', (int) ch : 5, '*');
+}

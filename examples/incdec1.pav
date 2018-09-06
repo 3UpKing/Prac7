@@ -1,0 +1,10 @@
+void Main () { $C+
+// incdec1.pav
+// Miscellaneous ++ and -- operations
+  int i = 10, j = 90;
+  int[] list = new int[12];
+  list[4] = 12;
+  list[4]++;
+  i++; j--;
+  write(i, j, list[4]);
+}

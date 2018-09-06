@@ -1,0 +1,8 @@
+void main () { $C+
+// final0.pav
+// test keyword "final"
+  final int i = 12;
+  final char eol = (char) 10;
+  write(i, eol, (int) eol);
+} // main
+

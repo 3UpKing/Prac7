@@ -1,0 +1,6 @@
+void Main () { $C+
+// if-then-else (wrong)
+  int i;
+  read(i);
+  if (i > 10) then write("greater than 10");
+}

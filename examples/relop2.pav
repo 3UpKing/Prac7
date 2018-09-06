@@ -1,0 +1,6 @@
+void main () { $C+
+// Assuming Pascal/Modula precedence rules
+  if ((4 > 5) && (23 > 12)) write("something wrong");
+  write (!!!true);
+  write(- 6 * 3 + 4);
+}

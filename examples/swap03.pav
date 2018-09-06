@@ -1,0 +1,24 @@
+// Parameter compatibility
+// swap03.pav
+
+void swap(int i, char j) {
+// Interchange values of i and j
+  int k = i;
+  i = j;
+  j = k;
+} // Swap
+
+void Main() {
+  char c;
+  int a, b;
+  readLine(c, a, b);
+
+  Swap(a, b);
+  writeLine(a, b);
+
+  Swap(a, c);
+  writeLine(a, c);
+
+  Swap(c, c);
+  writeLine(c, c);
+} // Main

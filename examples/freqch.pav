@@ -1,0 +1,27 @@
+void Main() {
+// Read a piece of text terminated with a period and determine the frequency
+// of occurrence of each letter
+// P.D. Terry, Rhodes University, 2016
+// freqch.pav
+  const
+    limit = 256;                      // 256 characters in ASCII set
+  char
+    ch;                               // general data character
+  int[]
+    count = new int[limit];           // the number of times each appears
+  int i = 0;                          // loop to clear counts
+  while (i < limit) {
+    count[i] = 0;
+    i = i + 1;
+  }
+  read(ch);
+  while (ch != '.') {                 // terminate input with a full stop
+    count[ch] = count[ch] + 1;        // increment appropriate count
+    read(ch);
+  }
+  ch = 'A';                           // loop to output characters and counts
+  while (ch <= 'Z') {
+    if (count[ch] > 0) write(ch, count[ch], "\n");
+    ch = (char) (ch + 1);
+  }
+} // Main

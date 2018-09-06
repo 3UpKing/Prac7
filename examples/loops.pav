@@ -1,0 +1,13 @@
+void main () { $C+
+// loops.pav
+// Demonstrate syntax for various loops
+// (not supposed to do anything useful!)
+  int i = 1, k = 0;
+  while (i < 10) {
+    repeat
+      write(k);
+      k = k + 1;
+    until (k > 1);
+    i = i + 1;
+  }
+}

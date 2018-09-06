@@ -1,0 +1,16 @@
+// Pass parameters by value
+// swap02.pav
+
+void Swap(int i, int j) {
+// Interchange values of i and j
+  int k = i;
+  i = j;
+  j = k;
+} // Swap
+
+void Main() {
+  int a, b;
+  readLine(a, b);
+  Swap(a, b);
+  writeLine(a, b);
+} // Main

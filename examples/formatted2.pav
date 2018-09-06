@@ -1,0 +1,8 @@
+void main () {
+// formatted2.pav
+// Interesting formatted output
+  int i = 12;
+  bool b = false;
+  char ch = '1';
+  writeLine(i : true,  ,  '*', b : ch, '*', ch : 8 * b, '*');
+}

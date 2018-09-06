@@ -1,0 +1,7 @@
+void Main () { $C+
+// relop1.pav
+// Assuming C precedence rules
+  if (4 > 5 && 23 > 12) write("something wrong");
+  write (!!!true);
+  write(6 + - + 4);
+}

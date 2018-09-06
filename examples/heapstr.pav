@@ -1,0 +1,9 @@
+void main () {
+// heapstr.pav
+// Strings on the heap (can you eliminate duplication?
+  writeLine("I give up");
+  writeLine("Goodbye cruel world - I am off to join the circus");
+  writeLine("Are you sure about that?");
+  writeLine("Quite sure - ", "I give up", ", I said " , "I give up");
+
+}

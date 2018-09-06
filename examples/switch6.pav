@@ -1,0 +1,27 @@
+void main () {
+// Demonstrate various statements, including switch
+
+  int age;
+  read(age);
+  switch (age) {
+    case 16:
+      write("sweet sixteen"); break;
+    case 21: {
+        write("party time!");
+        int beers = 20, headache = 0, strain = 0;
+        while (beers > 0) {
+          beers--; strain++; ++headache;
+          if (beers % 8 == 0) strain = 0;
+        }
+        break;
+      }
+    case 30:
+      write("over the hill, bru"); break;
+    case 40:
+    case 50:
+    case 60:
+      write("take a new lover"); break;
+    default:
+      write("boring"); break;
+  }
+} // main

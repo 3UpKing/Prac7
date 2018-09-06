@@ -1,0 +1,6 @@
+void main () { $C+
+  int i;
+  read(i);
+  if (i > 0) write("positive"); else write("negative");
+  if (i > 10) write("greater than 10");
+}

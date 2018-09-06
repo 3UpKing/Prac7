@@ -1,0 +1,14 @@
+void main () { $C+
+// final1.pav
+// test keyword "final"
+  final int i = 12;
+  final char eol = (char) 10;
+  write(i, eol, (int) eol);
+  i++;                            // immutable
+  read(eol);                      // immutable
+  final int x;                    // not defined
+  final int[] list = new int[30];
+  list = null;                    // immutable
+  list[1] = 44;                   // okay
+} // main
+

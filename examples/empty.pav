@@ -1,0 +1,7 @@
+void main () {
+ { ; ; ; }
+ { int k; const k = 10; }
+ { //write("hello"); }
+ if (true) { { int y; } int y2; const max = 10; }
+
+}

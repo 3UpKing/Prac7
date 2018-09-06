@@ -1,0 +1,15 @@
+void main () { $C+
+// final2.pav
+// test keyword "final"
+  final int i = 12;
+  final char eol = (char) 10;
+  write(i, eol, (int) eol);
+  i++;
+  read(eol);
+  final int x;
+  for x = 34 to 43 write(x);
+  final int[] list = new int[30];
+  list = null;
+  list[1] = 44;
+} // main
+

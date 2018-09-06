@@ -1,0 +1,8 @@
+void main () { $C+
+// A fatalistic approach to the oncoming examinations?
+// string2.pav  can you eliminate duplicates?
+  writeLine("Why");
+  writeLine("must I fail CS?");
+  write("Why");
+  writeLine("must I fail CS?");
+} // main

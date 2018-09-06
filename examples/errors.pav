@@ -1,0 +1,15 @@
+void Main () { $C+
+// errors.pav
+// Miscellaneous errors
+  const max = 111000000000000000 +
+  int x, y = true;
+  bool b = Main;
+  read("supply x, x);
+  while (x) {
+    int y, z;
+    y = true || 4;
+    write(x = a);
+  }
+  y = z;
+  write(max, "badstring);
+}

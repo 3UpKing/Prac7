@@ -1,0 +1,10 @@
+void main() { $C+ $D+
+// switch1.pav
+
+  switch (4) {
+    case 2: case 3: case 4:  halt;
+    case 5: halt;
+    default: halt;
+  }
+} // main
+

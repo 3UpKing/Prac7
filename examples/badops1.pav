@@ -1,0 +1,11 @@
+void main () { $C+
+// badops1.pav
+// Confusing the syntax with Pascal
+  int loopVar;
+  if (loopVar > 0) then write("positive");
+  while (loopVar <> 4 + 6 ) do {
+    write("loopVar is ", loopVar);;
+    if (loopVar % 3 = 0) write("loopVar is a multiple of 3");
+    loopVar := loopVar + 1
+  }
+}

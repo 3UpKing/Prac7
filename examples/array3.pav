@@ -1,0 +1,12 @@
+void main() { $C+
+// Test object properties for an array
+// array3.pav
+
+  int[] list1 = new int[30];
+  list1[4] = 40;
+  int[] list2 = new int[30];
+  writeLine(list1[4], list2[4]);
+  list2[4] = 50;
+  list1 = Copy(list2);
+  writeLine(list1[4], list2[4]);
+} // main

@@ -1,0 +1,16 @@
+void main () {
+// Test triples of numbers to see if a right angled triangle could be constructed from them
+// P.D. Terry, Rhodes University, 2016
+// pythag.pav
+  int a, b, c;
+  read(a);
+  while (a > 0) {
+    read(b, c);
+    write(a, b, c);
+    if (2 * sqr(max(max(a, b), c)) == sqr(a) + sqr(b) + sqr(c))
+      writeLine(" form a right angle triangle");
+    else
+      writeLine(" do not form a right angle triangle");
+    read(a);
+  } // main
+

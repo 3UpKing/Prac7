@@ -1,0 +1,8 @@
+void Main() { $C+
+  int i = 0;
+  while (i <= 100) {
+    write(i);
+    i = i + 1;
+  }
+}
+

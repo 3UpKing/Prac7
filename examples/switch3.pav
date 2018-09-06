@@ -1,0 +1,7 @@
+void main() { $C+ $D+
+// switch3.pav
+
+  switch (4) {
+  }
+} // main
+

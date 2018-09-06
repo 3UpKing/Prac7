@@ -1,0 +1,24 @@
+// Read a list of marks and then display it
+// array6.pav
+
+void DisplayList(int [] list) {
+// Display all the values in list[0] .. list[length - 1]
+  int i = 0;
+  while (i < Length(list)) (
+    write(list[i]);
+    ++i;
+  }
+} // DisplayList
+
+void Main() {
+  int [] marks = new int[12];
+  int i = 0;
+  while (i < Length(marks)) {
+    read(marks[i]);
+    i++;
+  }
+  DisplayList(marks);
+
+} // Main
+
+

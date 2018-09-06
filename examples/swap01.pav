@@ -1,0 +1,16 @@
+// Pass parameters by reference
+// swap01.pav
+
+void Swap(ref int i, ref int j) {
+// Interchange values of i and j
+  int k = i;
+  i = j;
+  j = k;
+} // Swap
+
+void Main() {
+  int a, b;
+  readLine(a, b);
+  Swap(ref a, ref b);
+  writeLine(a, b);
+} // Main

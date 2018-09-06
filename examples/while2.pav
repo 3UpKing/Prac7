@@ -1,0 +1,12 @@
+void Main () { $C+
+// while2.pav
+// nested while loops
+  int i = 10;
+  while (i < 10) {
+    int j = 1;
+    while (j < 100) {
+      write(j);
+    }
+    write(i);
+  }
+}

@@ -1,0 +1,10 @@
+void Main () { $C+
+// continue0.pav
+// Simple continue statements
+  while (true) {
+    write(1);
+    continue;
+    write(2);
+    continue;
+  }
+}

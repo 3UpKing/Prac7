@@ -1,0 +1,15 @@
+void main() { $C+
+// Test object properties for an array
+// array2.pav
+
+  int[] list1 = new int[20];
+  int[] list2 = new int[10];
+  writeLine(Equals(list1, list2));
+  list1[4] = 12;
+  writeLine(Equals(list1, list2));
+  list1 = Copy(list2);
+  writeLine(Equals(list1, list2));
+  list1[5] = 12;
+  writeLine(Equals(list1, list2));
+  writeLine(list2 == list1);
+} // main

@@ -1,0 +1,24 @@
+void main() { $C+ $D+
+// switch2.pav
+
+  int i;
+  int j = 123;
+  char s;
+  read(i);
+  switch (i) {
+    case 5: break;
+    case 6: case 7: case 8: write("mid", "\n");
+    case 10: case -10: write(9); write(10); write(12, "\n");
+    default: write("default", "\n");
+  }
+  write("finished", "\n");
+
+  stackdump;
+  read(s);
+  write(s, "\n");
+  switch (s) {
+    case ' ': write("space", "\n");
+    case '\n': write("EOL", "\n");
+    default: write("default", "\n");
+    }
+  } // main

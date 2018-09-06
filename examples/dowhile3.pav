@@ -1,0 +1,9 @@
+void main () { $C+
+// dowhile3.pav
+// Simple do-while loop
+  int i = 0;
+  Do {
+    Write(i);
+    i = i + 1;
+  } While (i < 10);
+}

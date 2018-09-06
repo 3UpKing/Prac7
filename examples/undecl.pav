@@ -1,0 +1,7 @@
+void main () { $C+
+// undecl.pav
+// Undeclared variables
+  i = 8;
+  i = i + 1;
+  list[i] = k + 5 + list[k + true] + list;
+}

@@ -1,0 +1,5 @@
+void main () { $C+
+// A fatalistic approach to the oncoming examinations?
+  writeLine("Why");
+  writeLine("must I fail CS?");
+} // main
