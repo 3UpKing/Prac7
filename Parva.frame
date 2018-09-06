@@ -46,7 +46,8 @@ namespace -->namespace {
     }
 
     public static void Main (string[] args) {
-      bool mergeErrors = false, execution = true, immediate = false;
+      bool mergeErrors = false, execution = true, immediate = false, cod = false, symbol = false, stack = false, heap = false;
+
       string inputName = null;
 
       // ------------------------ process command line parameters:
@@ -58,15 +59,24 @@ namespace -->namespace {
         else if (args[i].ToLower().Equals("-d")) Parser.debug = true;
         else if (args[i].ToLower().Equals("-n")) execution = false;
         else if (args[i].ToLower().Equals("-g")) immediate = true;
+        else if (args[i].ToLower().Equals("-c")) cod = true;
+        else if (args[i].ToLower().Equals("-st")) symbol = true;
+        else if (args[i].ToLower().Equals("-sd")) stack = true;
+        else if (args[i].ToLower().Equals("-hd")) heap = true;
+
         else inputName = args[i];
       }
       if (inputName == null) {
         Console.WriteLine("No input file specified");
-        Console.WriteLine("Usage: Parva [-l] [-d] [-n] [-g] source.pav");
+        Console.WriteLine("Usage: Parva [-l] [-d] [-n] [-g] [-c] [-st] [-sd] [-hd] source.pav");
         Console.WriteLine("-l directs source listing to listing.txt");
         Console.WriteLine("-d turns on debug mode");
         Console.WriteLine("-n no execution after compilation");
         Console.WriteLine("-g execute immediately after compilation (StdIn/StdOut)");
+        Console.WriteLine("-c generate .cod file");
+        Console.WriteLine("-st lists out current symbol table");
+        Console.WriteLine("-sd generate debugging code that will display the state of the runtime stack area");
+        Console.WriteLine("-hd generate debugging code that will display the state of the runtime heap area");
         System.Environment.Exit(1);
       }
 
@@ -90,9 +100,29 @@ namespace -->namespace {
 
       bool assembledOK = Parser.Successful();
       int initSP = CodeGen.GetInitSP();
-      string codeName = newFileName(inputName, ".cod");
+      
       int codeLength = CodeGen.GetCodeLength();
-      PVM.ListCode(codeName, codeLength);
+      
+      if(cod)
+      {
+        string codeName = newFileName(inputName, ".cod");
+        PVM.ListCode(codeName, codeLength);
+      }
+      if(symbol)
+      {
+        Table.PrintTable(new OutFile("symboltable.txt"));
+      }
+
+      if(stack)
+      {
+        CodeGen.Stack();
+      }
+
+      if(heap)
+      {
+        CodeGen.Heap();
+      }
+
       if (!assembledOK || codeLength == 0) {
         Console.WriteLine("Unable to interpret code");
         System.Environment.Exit(1);
