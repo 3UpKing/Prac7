@@ -20,7 +20,7 @@ namespace Parva {
     }
 
     public static void Main (string[] args) {
-      bool mergeErrors = false, execution = true, immediate = false, cod = false, symbol = false, stack = false, heap = false;
+      bool mergeErrors = false, execution = true, immediate = false, cod = false;
 
       string inputName = null;
 
@@ -45,10 +45,7 @@ namespace Parva {
         Console.WriteLine("-n no execution after compilation");
         Console.WriteLine("-g execute immediately after compilation (StdIn/StdOut)");
         Console.WriteLine("-c generate .cod file");
-        Console.WriteLine("-st lists out current symbol table");
-        Console.WriteLine("-sd generate debugging code that will display the state of the runtime stack area");
-        Console.WriteLine("-hd generate debugging code that will display the state of the runtime heap area");
-        System.Environment.Exit(1);
+              System.Environment.Exit(1);
       }
 
       // ------------------------ parser and scanner initialization

@@ -184,14 +184,14 @@ PRODUCTIONS
                      CodeGen.LeaveVoidFunction(); .)
   .
 
-  Statement<StackFrame frame>
+  Statement<StackFrame frame>     (. string msg = ""; .)
   =  SYNC (   Block<frame>
             | ConstDeclarations
             | VarDeclarations<frame>
             | AssignmentOrCall
             | IfStatement<frame>
             | WhileStatement<frame>
-            | HaltStatement
+            | HaltStatement<msg>
             | ReturnStatement
             | ReadStatement
             | WriteStatement
@@ -333,7 +333,7 @@ PRODUCTIONS
   IfStatement<StackFrame frame>
                    			  (. Label falseLabel = 
 							new Label(!known); .)
-  =  "if" "(" Condition ")"   ["then" (. SemError("Should 'then' be here?").)]     (. CodeGen.BranchFalse
+  =  "if" "(" Condition ")"   ["then" (. SemError("Should 'then' be here?");.)]     (. CodeGen.BranchFalse
 								(falseLabel); .)
         Statement<frame>          (. falseLabel.Here(); .)
   .
@@ -373,9 +373,9 @@ PRODUCTIONS
     Constant<out con>
     ":"
   .
-
-  HaltStatement
-  =  "halt"                      (. CodeGen.LeaveProgram(); .)
+                                        
+  HaltStatement<string printMsg = "">
+  =  "halt"                     (. CodeGen.WriteString(printMsg); CodeGen.LeaveProgram(); .)
      WEAK ";"
   .
 
@@ -386,11 +386,16 @@ PRODUCTIONS
 
   ReadStatement
   = "read" "(" ReadList ")" WEAK ";"
+    | "readLine"  "(" ReadListLine ")" WEAK ";"
   .
 
-  ReadList
-  = ReadElement { WEAK "," ReadElement }
+  ReadListLine
+  = ReadElement { WEAK "," ReadElement } (. CodeGen.ReadLine(); .)
   .
+  ReadList
+  = ReadElement { WEAK "," ReadElement } 
+  .
+
 
   ReadElement                        (. string str;
                                         DesType des; .)
@@ -412,6 +417,11 @@ PRODUCTIONS
 
   WriteStatement
   =  "write" "(" WriteList ")" WEAK ";"
+  | "writeLine" "(" WriteListLine ")" WEAK ";"
+  .
+
+  WriteListLine
+  = WriteElement { WEAK "," WriteElement } (. CodeGen.WriteLine(); .)
   .
 
   WriteList
@@ -605,7 +615,7 @@ PRODUCTIONS
 
   AssignOp = 
         "=" 
-      | ":="                          (. SemError("Did you mean '=' ?") .)
+      | ":="                          (. SemError("Did you mean '=' ?"); .)
   .
 
   Ident<out string name>
