@@ -1,9 +1,12 @@
 
    1 void Main () { $C+
-   2   int i = 0;
-   3   do {
-   4     write(i); i = i+1;
-   5   } while (i != 10);
-   6 }
+   2 // repeat1.pav
+   3 // simple repeat until loop
+   4   int i = 0;
+   5   repeat
+   6     write(i);
+   7     i = i + 1;
+   8   until (i >= 10);
+   9 }
 
 0 errors detected

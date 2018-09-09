@@ -358,28 +358,22 @@ PRODUCTIONS
 							    new Label(known); .)
   =   "do" Statement<frame>      
   
-  "while" "(" Condition ")"        (. CodeGen.BranchFalse
-								(loopExit); CodeGen.Branch(loopStart);
-                loopExit.Here(); .)
-     
+  "while" "(" Condition ")"        (. CodeGen.BranchFalse(loopExit); 
+                                      CodeGen.Branch(loopStart);
+                                      loopExit.Here(); .)     
   .
   
-  RepeatStatement<StackFrame frame> = "repeat" . 
-
- /* WhileStatement<StackFrame frame>    (. Label loopExit  =
+  RepeatStatement<StackFrame frame>     (. Label loopExit  =
 								 new Label(!known);
                                          Label loopStart =
 							    new Label(known); .)
-  =  "while" "(" Condition ")"        (. CodeGen.BranchFalse
-								(loopExit); .)
-     Statement<frame>                 (. CodeGen.Branch
-								(loopStart);
-                                         loopExit.Here(); .)
-  .					*/		
 
+  = "repeat" {Statement<frame>}
 
-  
-  
+    "until" "(" Condition ")" (. CodeGen.BranchFalse(loopExit);
+                                 CodeGen.Branch(loopStart);
+                                 loopExit.Here(); .)
+  . 
 
   SwitchStatement<StackFrame frame>       (. int expType; .)
   = "switch"
