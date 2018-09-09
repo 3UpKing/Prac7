@@ -191,6 +191,8 @@ PRODUCTIONS
             | AssignmentOrCall
             | IfStatement<frame>
             | WhileStatement<frame>
+            | DoWhileStatement<frame>
+            | RepeatStatement<frame>
             | HaltStatement<msg>
             | ReturnStatement
             | ReadStatement
@@ -349,6 +351,35 @@ PRODUCTIONS
 								(loopStart);
                                          loopExit.Here(); .)
   .
+
+  DoWhileStatement<StackFrame frame>    (. Label loopExit  =
+								 new Label(!known);
+                                         Label loopStart =
+							    new Label(known); .)
+  =   "do" Statement<frame>      
+  
+  "while" "(" Condition ")"        (. CodeGen.BranchFalse
+								(loopExit); CodeGen.Branch(loopStart);
+                loopExit.Here(); .)
+     
+  .
+  
+  RepeatStatement<StackFrame frame> = "repeat" . 
+
+ /* WhileStatement<StackFrame frame>    (. Label loopExit  =
+								 new Label(!known);
+                                         Label loopStart =
+							    new Label(known); .)
+  =  "while" "(" Condition ")"        (. CodeGen.BranchFalse
+								(loopExit); .)
+     Statement<frame>                 (. CodeGen.Branch
+								(loopStart);
+                                         loopExit.Here(); .)
+  .					*/		
+
+
+  
+  
 
   SwitchStatement<StackFrame frame>       (. int expType; .)
   = "switch"
