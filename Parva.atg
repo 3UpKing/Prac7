@@ -198,8 +198,18 @@ PRODUCTIONS
             | ReadStatement
             | WriteStatement
             | SwitchStatement<frame>
+            | MaxStatement<frame>
+            | MinStatement<frame>
             | ";"
           ) .
+
+  MaxStatement<StackFrame frame>        (.int intType = 0; .)
+  = "max" "(" Expression<intType> {"," Expression<intType> } ")"      (.PVM.Max() ; .)
+  .
+
+  MinStatement<StackFrame frame>        (.int intType = 0; .)
+  = "min" "(" Expression<intType> {"," Expression<intType> } ")"      (. PVM.Min(); .)
+  .
 
   Block<StackFrame frame>
   =                                  (. Table.OpenScope(); .)
