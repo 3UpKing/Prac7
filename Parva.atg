@@ -368,11 +368,12 @@ PRODUCTIONS
                                          Label loopStart =
 							    new Label(known); .)
 
-  = "repeat" {Statement<frame>}
+  = "repeat" {Statement<frame>}        
 
-    "until" "(" Condition ")" (. CodeGen.BranchFalse(loopExit);
-                                 CodeGen.Branch(loopStart);
-                                 loopExit.Here(); .)
+    "until" "(" Condition ")" (. CodeGen.BranchFalse(loopStart);
+                                 CodeGen.Branch(loopExit);
+                                 loopExit.Here();
+                                  .)    
   . 
 
   SwitchStatement<StackFrame frame>       (. int expType; .)
