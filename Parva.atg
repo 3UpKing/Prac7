@@ -198,17 +198,22 @@ PRODUCTIONS
             | ReadStatement
             | WriteStatement
             | SwitchStatement<frame>
-            | MaxStatement<frame>
-            | MinStatement<frame>
+            | BreakStatement<frame>
             | ";"
           ) .
 
+/*
   MaxStatement<StackFrame frame>        (.int intType = 0; .)
-  = "max" "(" Expression<intType> {"," Expression<intType> } ")"      (.PVM.Max() ; .)
+  = "max" "(" Expression<intType> {"," Expression<intType> } ")"      
   .
 
   MinStatement<StackFrame frame>        (.int intType = 0; .)
-  = "min" "(" Expression<intType> {"," Expression<intType> } ")"      (. PVM.Min(); .)
+  = "min" "(" Expression<intType> {"," Expression<intType> } ")"     
+  .
+*/
+
+  BreakStatement<StackFrame frame>
+  = "break"
   .
 
   Block<StackFrame frame>
@@ -344,18 +349,24 @@ PRODUCTIONS
 
   IfStatement<StackFrame frame>
                    			          (. Label falseLabel = 
-							                    new Label(!known);  Label  exit = new Label(!known); .)
+							                    new Label(!known); 
+                                  Label elsIfExit = new Label (!known);
+                                  Label ifExit = new Label(!known); .)
+                                   
 
 
   =  "if" "(" Condition ")"   ["then" (. SemError("Should 'then' be here?");.)]     (. CodeGen.BranchFalse
 							                	(falseLabel); .)
-        Statement<frame>        (. CodeGen.Branch(exit) ; falseLabel.Here(); .)
+        Statement<frame>        (. CodeGen.Branch(ifExit) ; falseLabel.Here(); .)
 
-       [ "else" 
-       
-        Statement<frame>  ]
+       { 
+         "elsif" "(" Condition ")" (.  CodeGen.BranchFalse(elsIfExit);.)
+         Statement<frame>         (. CodeGen.Branch(ifExit) ; elsIfExit.Here(); .)       
+       }
 
-      (. exit.Here(); .)
+       [ "else" Statement<frame>  ] (. ifExit.Here(); .)
+
+     
   .
 
 
