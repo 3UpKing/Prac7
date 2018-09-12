@@ -343,11 +343,19 @@ PRODUCTIONS
   .
 
   IfStatement<StackFrame frame>
-                   			  (. Label falseLabel = 
-							new Label(!known); .)
+                   			          (. Label falseLabel = 
+							                    new Label(!known);  Label  exit = new Label(!known); .)
+
+
   =  "if" "(" Condition ")"   ["then" (. SemError("Should 'then' be here?");.)]     (. CodeGen.BranchFalse
-								(falseLabel); .)
-        Statement<frame>          (. falseLabel.Here(); .)
+							                	(falseLabel); .)
+        Statement<frame>        (. CodeGen.Branch(exit) ; falseLabel.Here(); .)
+
+       [ "else" 
+       
+        Statement<frame>  ]
+
+      (. exit.Here(); .)
   .
 
 
