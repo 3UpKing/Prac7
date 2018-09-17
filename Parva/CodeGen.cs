@@ -5,6 +5,8 @@
 
 using System;
 using System.IO;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Parva {
 
@@ -82,16 +84,21 @@ namespace Parva {
       }
     } // CodeGen.Emit
 
-    public static void Max(){
-      // Generates code to find max number from given params
+    public static void Max(int count){
+      // Generates code to find max number from given params            
       Emit(PVM.max);
-      
+      LoadConstant(count);      
     } // CodeGen.Max
 
-    public static void Min(){
+    public static void Min(int count){
       // Generates code to find min number from given params
       Emit(PVM.min);
     } // CodeGen.Min
+
+    public static void Sqr(){
+      // Generates code to the square of a number from given params
+      Emit(PVM.sqr);
+    } // CodeGen.Sqr
 
     public static void NegateInteger() {
     // Generates code to negate integer value on top of evaluation stack

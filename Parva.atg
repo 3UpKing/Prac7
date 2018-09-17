@@ -198,21 +198,10 @@ PRODUCTIONS
             | ReadStatement
             | WriteStatement
             | SwitchStatement<frame>
-            | BreakStatement<frame>
+            | BreakStatement<frame>     
             | ";"
           ) .
 
-/*
-  MaxStatement<StackFrame frame>        (.int expType = 0; List<int> args = new List<int>(); .)
-  = "max" "(" Expression<expType> (. args.Add(token.val); .)
-            {"," Expression<expType> (. args.Add(token.val); .) } ")"
-                                (. CodeGen.Max(args); .)      
-  .
-
-  MinStatement<StackFrame frame>        (.int expType = 0; .)
-  = "min" "(" Expression<expType> {"," Expression<expType> } ")"     
-  .
-*/
 
   BreakStatement<StackFrame frame>
   = "break"
@@ -641,6 +630,19 @@ PRODUCTIONS
 							type = Types.intType; .)
          | Expression<out type> ")"
        )
+
+    |      (. int count = 0; int expType = 0; .)
+      "max" "(" Expression<out expType> (. count++; .)
+            {"," Expression<out expType> (. count++; .) } ")"
+                                (. CodeGen.Max(count); .)      
+
+    |     (. int count = 0; int expType = 0; .)
+      "min" "(" Expression<out expType> (. count++; .)
+            {"," Expression<out expType> (. count++; .) } ")"
+                                (. CodeGen.Min(count); .) 
+    | (. int expType = 0; .)   
+      "sqr" "(" Expression<out expType> ")" (. CodeGen.Sqr(); .)
+  
   .
 
   AddOp<out int op>                   	(. op = CodeGen.nop; .)

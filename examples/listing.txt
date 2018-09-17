@@ -1,11 +1,23 @@
 
-   1 void Main () { $C+
-   2 // if-then-else
-   3   int a, b, c, d;
-   4   if (a == 1) { c = d; }
-   5   if (a == 1) {}
-   6   if (a == 1) {} else {}
-   7   if (a == 1) {} else { b = 1; }
-   8 }
+   1 void main () {
+   2 // Test triples of numbers to see if a right angled triangle could be constructed from them
+   3 // P.D. Terry, Rhodes University, 2016
+   4 // pythag.pav
+   5   int a, b, c;
+   6   a = 12;
+   7   b = 5;
+   8   c = 13;
+   9   //read(a);
+  10   while (a > 0) {
+  11     //read(b, c);
+  12     write(a, b, c);
+  13     if (2 * sqr(max(max(a, b), c)) == sqr(a) + sqr(b) + sqr(c))
+  14       writeLine(" form a right angle triangle");
+  15     else
+  16       writeLine(" do not form a right angle triangle");
+  17     //read(a);
+  18   }
+  19  } // main
+  20 
 
 0 errors detected

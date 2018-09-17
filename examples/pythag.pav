@@ -3,14 +3,18 @@ void main () {
 // P.D. Terry, Rhodes University, 2016
 // pythag.pav
   int a, b, c;
-  read(a);
+  a = 12;
+  b = 5;
+  c = 13;
+  //read(a);
   while (a > 0) {
-    read(b, c);
-    write(a, b, c);
+    //read(b, c);
+    //write(a, b, c);
     if (2 * sqr(max(max(a, b), c)) == sqr(a) + sqr(b) + sqr(c))
       writeLine(" form a right angle triangle");
     else
       writeLine(" do not form a right angle triangle");
-    read(a);
-  } // main
+    //read(a);
+  }
+ } // main
 

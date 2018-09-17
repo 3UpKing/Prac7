@@ -106,6 +106,7 @@ namespace Parva {
       sub     =  77,
       max     =  78,
       min     =  79,
+      sqr     =  80,
 
       nul     = 255;                         // leave gap for future
 
@@ -205,6 +206,7 @@ namespace Parva {
         case PVM.ldl:
         case PVM.stl:
         case PVM.stlc:
+        case PVM.max:
         case PVM.prns:
           results.Write(mem[cpu.pc], 7); break;
         default: break;
@@ -299,11 +301,29 @@ namespace Parva {
             break;
 
           case PVM.max:
+            int countMax = Next();
+            for (int i =0; i<countMax-1; i++)
+            {
+              tos=Pop();
+              sos=Pop();
+              Push(Math.Max(tos,sos));
+            }
             
             break;
 
           case PVM.min:
+            int countMin = Next();
+            for (int i =0; i<countMin-1; i++)
+            {
+              tos=Pop();
+              sos=Pop();
+              Push(Math.Min(tos,sos));
+            }
             break;
+
+          case PVM.sqr:
+            Push(Convert.ToInt32(Math.Pow(Pop() , 2) ));
+          break;
 
           case PVM.dsp:           // decrement stack pointer (allocate space for variables)
             int localSpace = Next();
@@ -856,6 +876,9 @@ namespace Parva {
       mnemonics[PVM.sub]      = "SUB";
       mnemonics[PVM.max]      = "MAX";
       mnemonics[PVM.min]      = "MIN";
+      mnemonics[PVM.sqr]      = "SQR";
+      
+      
 
     } // PVM.Init
 

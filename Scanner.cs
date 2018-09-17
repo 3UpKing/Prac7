@@ -63,8 +63,8 @@ public class Scanner {
 	const char EOL = '\n';
 	const int  eofSym = 0;
 	const int charSetSize = 256;
-	const int maxT = 59;
-	const int noSym = 59;
+	const int maxT = 62;
+	const int noSym = 62;
 	static short[] start = {
 	  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
 	  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
@@ -216,6 +216,9 @@ public class Scanner {
 			case "write": t.kind = 41; break;
 			case "writeLine": t.kind = 42; break;
 			case "new": t.kind = 46; break;
+			case "max": t.kind = 47; break;
+			case "min": t.kind = 48; break;
+			case "sqr": t.kind = 49; break;
 			default: break;
 		}
 	}
@@ -274,22 +277,22 @@ public class Scanner {
 			case 10:
 				{ t.kind = 4; goto done; }
 			case 11:
-				{ t.kind = 60; goto done; }
-			case 12:
-				{ t.kind = 61; goto done; }
-			case 13:
-				{ t.kind = 62; goto done; }
-			case 14:
 				{ t.kind = 63; goto done; }
-			case 15:
+			case 12:
 				{ t.kind = 64; goto done; }
+			case 13:
+				{ t.kind = 65; goto done; }
+			case 14:
+				{ t.kind = 66; goto done; }
+			case 15:
+				{ t.kind = 67; goto done; }
 			case 16:
 				if (ch == 'D') { buf.Append(ch); NextCh(); goto case 17; }
 				else { t.kind = noSym; goto done; }
 			case 17:
-				{ t.kind = 65; goto done; }
+				{ t.kind = 68; goto done; }
 			case 18:
-				{ t.kind = 66; goto done; }
+				{ t.kind = 69; goto done; }
 			case 19:
 				if (ch == 'C') { buf.Append(ch); NextCh(); goto case 20; }
 				else if (ch == 'D') { buf.Append(ch); NextCh(); goto case 21; }
@@ -339,23 +342,23 @@ public class Scanner {
 			case 36:
 				{ t.kind = 44; goto done; }
 			case 37:
-				{ t.kind = 47; goto done; }
-			case 38:
-				{ t.kind = 48; goto done; }
-			case 39:
-				{ t.kind = 49; goto done; }
-			case 40:
 				{ t.kind = 50; goto done; }
-			case 41:
+			case 38:
 				{ t.kind = 51; goto done; }
-			case 42:
+			case 39:
+				{ t.kind = 52; goto done; }
+			case 40:
 				{ t.kind = 53; goto done; }
+			case 41:
+				{ t.kind = 54; goto done; }
+			case 42:
+				{ t.kind = 56; goto done; }
 			case 43:
-				{ t.kind = 55; goto done; }
-			case 44:
-				{ t.kind = 57; goto done; }
-			case 45:
 				{ t.kind = 58; goto done; }
+			case 44:
+				{ t.kind = 60; goto done; }
+			case 45:
+				{ t.kind = 61; goto done; }
 			case 46:
 				if (ch == ']') { buf.Append(ch); NextCh(); goto case 29; }
 				else { t.kind = 21; goto done; }
@@ -367,14 +370,14 @@ public class Scanner {
 				else { t.kind = 45; goto done; }
 			case 49:
 				if (ch == '=') { buf.Append(ch); NextCh(); goto case 40; }
-				else { t.kind = 52; goto done; }
+				else { t.kind = 55; goto done; }
 			case 50:
 				if (ch == '>') { buf.Append(ch); NextCh(); goto case 42; }
 				else if (ch == '=') { buf.Append(ch); NextCh(); goto case 43; }
-				else { t.kind = 54; goto done; }
+				else { t.kind = 57; goto done; }
 			case 51:
 				if (ch == '=') { buf.Append(ch); NextCh(); goto case 44; }
-				else { t.kind = 56; goto done; }
+				else { t.kind = 59; goto done; }
 
 		}
 		done:
