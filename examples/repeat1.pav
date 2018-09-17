@@ -4,6 +4,7 @@ void Main () { $C+
   int i = 0;
   repeat
     write(i);
+    if(i == 5) break;
     i = i + 1;
   until (i >= 10);
 }

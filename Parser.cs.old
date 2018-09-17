@@ -302,7 +302,7 @@ public class Parser {
 	}
 
 	static void Statement(StackFrame frame) {
-		string msg = "";
+		string msg = ""; Label tmp = new Label(!known);
 		while (!(StartOf(5))) {SynErr(63); Get();}
 		switch (la.kind) {
 		case 9: {
@@ -358,7 +358,7 @@ public class Parser {
 			break;
 		}
 		case 12: {
-			BreakStatement(frame);
+			BreakStatement(tmp);
 			break;
 		}
 		case 11: {
@@ -458,6 +458,7 @@ public class Parser {
 	static void WhileStatement(StackFrame frame) {
 		Label loopExit  =
 		new Label(!known);
+		
 		Label loopStart =
 		new Label(known);
 		Expect(27);
@@ -491,11 +492,18 @@ public class Parser {
 	static void RepeatStatement(StackFrame frame) {
 		Label loopExit  =
 		new Label(!known);
+
+		Label brexit  =
+		new Label(!known);
 		Label loopStart =
 		new Label(known);
 		Expect(29);
 		while (StartOf(3)) {
-			Statement(frame);
+			if (StartOf(3)) {
+				Statement(frame);
+			} else {
+				BreakStatement(loopExit);
+			}
 		}
 		Expect(30);
 		Expect(6);
@@ -504,6 +512,7 @@ public class Parser {
 		CodeGen.BranchFalse(loopStart);
 		CodeGen.Branch(loopExit);
 		loopExit.Here();
+		brexit.Here();
 		
 	}
 
@@ -575,8 +584,9 @@ public class Parser {
 		Expect(10);
 	}
 
-	static void BreakStatement(StackFrame frame) {
+	static void BreakStatement(Label exit) {
 		Expect(12);
+		CodeGen.Branch(exit);
 	}
 
 	static void OneConst() {

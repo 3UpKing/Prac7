@@ -184,7 +184,7 @@ PRODUCTIONS
                      CodeGen.LeaveVoidFunction(); .)
   .
 
-  Statement<StackFrame frame>     (. string msg = ""; .)
+  Statement<StackFrame frame>     (. string msg = ""; Label tmp = new Label(known); .)
   =  SYNC (   Block<frame>
             | ConstDeclarations
             | VarDeclarations<frame>
@@ -198,13 +198,13 @@ PRODUCTIONS
             | ReadStatement
             | WriteStatement
             | SwitchStatement<frame>
-            | BreakStatement<frame>     
+            | BreakStatement<tmp>     
             | ";"
           ) .
 
 
-  BreakStatement<StackFrame frame>
-  = "break"
+  BreakStatement<Label exit>
+  = "break"             (. CodeGen.Branch(exit); .)
   .
 
   Block<StackFrame frame>
@@ -361,6 +361,7 @@ PRODUCTIONS
 
   WhileStatement<StackFrame frame>    (. Label loopExit  =
 								 new Label(!known);
+                 
                                          Label loopStart =
 							    new Label(known); .)
   =  "while" "(" Condition ")"        (. CodeGen.BranchFalse
@@ -383,14 +384,21 @@ PRODUCTIONS
   
   RepeatStatement<StackFrame frame>     (. Label loopExit  =
 								 new Label(!known);
+
+                 Label brexit  =
+								 new Label(!known);
                                          Label loopStart =
 							    new Label(known); .)
 
-  = "repeat" {Statement<frame>}        
+  = "repeat" {
+                Statement<frame> 
+                | BreakStatement<loopExit>    
+            }        
 
     "until" "(" Condition ")" (. CodeGen.BranchFalse(loopStart);
                                  CodeGen.Branch(loopExit);
                                  loopExit.Here();
+                                 brexit.Here();
                                   .)    
   . 
 
