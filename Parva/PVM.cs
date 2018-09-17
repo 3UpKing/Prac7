@@ -104,6 +104,8 @@ namespace Parva {
       sto     =  75,
       stoc    =  76,
       sub     =  77,
+      max     =  78,
+      min     =  79,
 
       nul     = 255;                         // leave gap for future
 
@@ -295,6 +297,14 @@ namespace Parva {
         switch (cpu.ir) {         // execute
           case PVM.nop:           // no operation
             break;
+
+          case PVM.max:
+            
+            break;
+
+          case PVM.min:
+            break;
+
           case PVM.dsp:           // decrement stack pointer (allocate space for variables)
             int localSpace = Next();
             cpu.sp -= localSpace;
@@ -844,6 +854,8 @@ namespace Parva {
       mnemonics[PVM.sto]      = "STO";
       mnemonics[PVM.stoc]     = "STOC";
       mnemonics[PVM.sub]      = "SUB";
+      mnemonics[PVM.max]      = "MAX";
+      mnemonics[PVM.min]      = "MIN";
 
     } // PVM.Init
 

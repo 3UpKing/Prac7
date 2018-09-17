@@ -203,12 +203,14 @@ PRODUCTIONS
           ) .
 
 /*
-  MaxStatement<StackFrame frame>        (.int intType = 0; .)
-  = "max" "(" Expression<intType> {"," Expression<intType> } ")"      
+  MaxStatement<StackFrame frame>        (.int expType = 0; List<int> args = new List<int>(); .)
+  = "max" "(" Expression<expType> (. args.Add(token.val); .)
+            {"," Expression<expType> (. args.Add(token.val); .) } ")"
+                                (. CodeGen.Max(args); .)      
   .
 
-  MinStatement<StackFrame frame>        (.int intType = 0; .)
-  = "min" "(" Expression<intType> {"," Expression<intType> } ")"     
+  MinStatement<StackFrame frame>        (.int expType = 0; .)
+  = "min" "(" Expression<expType> {"," Expression<expType> } ")"     
   .
 */
 

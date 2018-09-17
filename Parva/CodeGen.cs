@@ -82,6 +82,17 @@ namespace Parva {
       }
     } // CodeGen.Emit
 
+    public static void Max(){
+      // Generates code to find max number from given params
+      Emit(PVM.max);
+      
+    } // CodeGen.Max
+
+    public static void Min(){
+      // Generates code to find min number from given params
+      Emit(PVM.min);
+    } // CodeGen.Min
+
     public static void NegateInteger() {
     // Generates code to negate integer value on top of evaluation stack
       Emit(PVM.neg);
