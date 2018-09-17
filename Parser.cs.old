@@ -474,7 +474,9 @@ public class Parser {
 		Label loopStart =
 		new Label(known);
 		Expect(26);
-		Statement(frame);
+		while (StartOf(3)) {
+			Statement(frame);
+		}
 		Expect(27);
 		Expect(6);
 		Condition();

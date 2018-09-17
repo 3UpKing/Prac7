@@ -1,12 +1,11 @@
 
    1 void Main () { $C+
-   2 // repeat1.pav
-   3 // simple repeat until loop
-   4   int i = 0;
-   5   repeat
-   6     write(i);
-   7     i = i + 1;
-   8   until (i >= 10);
-   9 }
+   2 // if-then-else
+   3   int a, b, c, d;
+   4   if (a == 1) { c = d; }
+   5   if (a == 1) {}
+   6   if (a == 1) {} else {}
+   7   if (a == 1) {} else { b = 1; }
+   8 }
 
 0 errors detected

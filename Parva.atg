@@ -349,17 +349,15 @@ PRODUCTIONS
 
   IfStatement<StackFrame frame>
                    			          (. Label falseLabel = 
-							                    new Label(!known); 
-                                  Label elsIfExit = new Label (!known);
-                                  Label ifExit = new Label(!known); .)
-                                   
+							                    new Label(!known);                                  
+                                  Label ifExit = new Label(!known); .)                                   
 
 
   =  "if" "(" Condition ")"   ["then" (. SemError("Should 'then' be here?");.)]     (. CodeGen.BranchFalse
 							                	(falseLabel); .)
         Statement<frame>        (. CodeGen.Branch(ifExit) ; falseLabel.Here(); .)
 
-       { 
+       {                            (. Label elsIfExit = new Label (!known); .)
          "elsif" "(" Condition ")" (.  CodeGen.BranchFalse(elsIfExit);.)
          Statement<frame>         (. CodeGen.Branch(ifExit) ; elsIfExit.Here(); .)       
        }
