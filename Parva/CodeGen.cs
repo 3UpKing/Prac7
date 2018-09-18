@@ -87,12 +87,13 @@ namespace Parva {
     public static void Max(int count){
       // Generates code to find max number from given params            
       Emit(PVM.max);
-      LoadConstant(count);      
+      Emit(count);      
     } // CodeGen.Max
 
     public static void Min(int count){
       // Generates code to find min number from given params
       Emit(PVM.min);
+      Emit(count);
     } // CodeGen.Min
 
     public static void Sqr(){

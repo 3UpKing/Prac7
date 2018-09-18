@@ -646,16 +646,16 @@
  640        )
  641 
  642     |      (. int count = 0; int expType = 0; .)
- 643       "max" "(" Expression<out expType> (. count++; .)
- 644             {"," Expression<out expType> (. count++; .) } ")"
+ 643       "max" "(" Expression<out type> (. count++; .)
+ 644             {"," Expression<out type> (. count++; .) } ")"
  645                                 (. CodeGen.Max(count); .)      
  646 
  647     |     (. int count = 0; int expType = 0; .)
- 648       "min" "(" Expression<out expType> (. count++; .)
- 649             {"," Expression<out expType> (. count++; .) } ")"
+ 648       "min" "(" Expression<out type> (. count++; .)
+ 649             {"," Expression<out type> (. count++; .) } ")"
  650                                 (. CodeGen.Min(count); .) 
  651     | (. int expType = 0; .)   
- 652       "sqr" "(" Expression<out expType> ")" (. CodeGen.Sqr(); .)
+ 652       "sqr" "(" Expression<out type> ")" (. CodeGen.Sqr(); .)
  653   
  654   .
  655 

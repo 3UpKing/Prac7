@@ -640,16 +640,16 @@ PRODUCTIONS
        )
 
     |      (. int count = 0; int expType = 0; .)
-      "max" "(" Expression<out expType> (. count++; .)
-            {"," Expression<out expType> (. count++; .) } ")"
+      "max" "(" Expression<out type> (. count++; .)
+            {"," Expression<out type> (. count++; .) } ")"
                                 (. CodeGen.Max(count); .)      
 
     |     (. int count = 0; int expType = 0; .)
-      "min" "(" Expression<out expType> (. count++; .)
-            {"," Expression<out expType> (. count++; .) } ")"
+      "min" "(" Expression<out type> (. count++; .)
+            {"," Expression<out type> (. count++; .) } ")"
                                 (. CodeGen.Min(count); .) 
     | (. int expType = 0; .)   
-      "sqr" "(" Expression<out expType> ")" (. CodeGen.Sqr(); .)
+      "sqr" "(" Expression<out type> ")" (. CodeGen.Sqr(); .)
   
   .
 

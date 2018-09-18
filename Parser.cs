@@ -1116,11 +1116,11 @@ public class Parser {
 			int count = 0; int expType = 0;
 			Get();
 			Expect(6);
-			Expression(out expType);
+			Expression(out type);
 			count++;
 			while (la.kind == 8) {
 				Get();
-				Expression(out expType);
+				Expression(out type);
 				count++;
 			}
 			Expect(7);
@@ -1131,11 +1131,11 @@ public class Parser {
 			int count = 0; int expType = 0;
 			Get();
 			Expect(6);
-			Expression(out expType);
+			Expression(out type);
 			count++;
 			while (la.kind == 8) {
 				Get();
-				Expression(out expType);
+				Expression(out type);
 				count++;
 			}
 			Expect(7);
@@ -1146,7 +1146,7 @@ public class Parser {
 			int expType = 0;
 			Get();
 			Expect(6);
-			Expression(out expType);
+			Expression(out type);
 			Expect(7);
 			CodeGen.Sqr();
 			break;

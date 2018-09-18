@@ -302,7 +302,7 @@ public class Parser {
 	}
 
 	static void Statement(StackFrame frame) {
-		string msg = ""; Label tmp = new Label(!known);
+		string msg = ""; Label tmp = new Label(known);
 		while (!(StartOf(5))) {SynErr(63); Get();}
 		switch (la.kind) {
 		case 9: {
